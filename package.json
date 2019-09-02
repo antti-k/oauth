@@ -1,0 +1,13 @@
+{
+  "name": "oauth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.1.0",
+    "inert": "^5.1.3",
+    "jsonwebtoken": "^8.5.1",
+    "path": "^0.12.7"
+  }
+}
