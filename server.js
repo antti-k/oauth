@@ -65,7 +65,9 @@ const start =  async function() {
 
 			const response = await axios.post(`https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`)
 
-			console.log(response.data)
+			const responseData = response.data
+			console.log({ responseData })
+
 			const token = response.data.split('&')[0].split('=')[1]
 
 			const githubUser = await axios.get(`https://api.github.com/user?client_id=${clientId}&client_secret=${clientSecret}`, {
@@ -75,7 +77,8 @@ const start =  async function() {
 				}
 			})
 
-			console.log(githubUser.data)
+			const githubUserData = githubUser.data
+			console.log({ githubUserData })
 			const { id, login } = githubUser.data
 			const userForToken = {
 				id,
