@@ -41,7 +41,7 @@ const start =  async function() {
 				auth = true
 				userName = decodedToken.login
 			} catch(error) {
-				console.log(error)
+				// console.log(error)
 			}
 
 			const response = {
