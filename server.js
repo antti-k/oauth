@@ -41,7 +41,7 @@ const start =  async function() {
 				auth = true
 				userName = decodedToken.login
 			} catch(error) {
-				// console.log(error)
+				console.log(error)
 			}
 
 			const response = {
@@ -61,12 +61,12 @@ const start =  async function() {
 			const clientSecret = process.env.CLIENT_SECRET
 
 			const { code } = request.query
-			console.log({ code })
+			// console.log({ code })
 
 			const response = await axios.post(`https://github.com/login/oauth/access_token?client_id=${clientId}&client_secret=${clientSecret}&code=${code}`)
 
 			const responseData = response.data
-			console.log({ responseData })
+			//console.log({ responseData })
 
 			const token = response.data.split('&')[0].split('=')[1]
 
@@ -78,7 +78,7 @@ const start =  async function() {
 			})
 
 			const githubUserData = githubUser.data
-			console.log({ githubUserData })
+			//console.log({ githubUserData })
 			const { id, login } = githubUser.data
 			const userForToken = {
 				id,
@@ -86,7 +86,7 @@ const start =  async function() {
 			}
 			const jwtToken = jwt.sign(userForToken, process.env.JWT_SECRET)
 
-			console.log({jwtToken})
+			//console.log({ jwtToken })
 
 			return (
 				`<script>const main = async () => {await sessionStorage.setItem('token', '${jwtToken}');window.location.href = 'http://localhost:3001'};main();</script>`
